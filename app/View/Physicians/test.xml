@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<response><result>1</result>
+	<data>
+		<address-results>on</address-results>
+		<CompanyBranch>
+			<type>2</type>
+			<branch>own2</branch>
+			<company_id>33</company_id>
+			</CompanyBranch><Company><logo/><id/><name>own2</name><website>own2</website><upload><name/><type/><tmp_name/><error>4</error><size>0</size></upload><validated>1</validated></Company><Laboratory><class>3</class><company_branch_id>34</company_branch_id></Laboratory><CompanyBranchInfo><mission>own2</mission><vision>own2</vision><company_branch_id>34</company_branch_id></CompanyBranchInfo><Address><province_state_id>3</province_state_id><town_city_id>13</town_city_id><village_id>10</village_id><street_number/><building_apartment>own2</building_apartment><floor>own2</floor><unit>own2</unit><longitude>120.98847269999999</longitude><latitude>15.0365452</latitude></Address><CompanyBranchMember><id/><users_id>2</users_id><role>2</role><company_branch_id>34</company_branch_id></CompanyBranchMember><CompanyBranchMemberDuty><id>33</id><status>1</status><day>1</day><start_time>3</start_time><end_time>4</end_time><company_branch_member_id>26</company_branch_member_id><validated>1</validated></CompanyBranchMemberDuty><CompanyBranchMemberDuty><id>34</id><status>1</status><day>3</day><start_time>4</start_time><end_time>5</end_time><company_branch_member_id>26</company_branch_member_id><validated>1</validated></CompanyBranchMemberDuty><CompanyBranchMemberDuty><id>35</id><status>1</status><day>5</day><start_time>5</start_time><end_time>6</end_time><company_branch_member_id>26</company_branch_member_id><validated>1</validated></CompanyBranchMemberDuty><CompanyBranchMemberDuty><id/><status/><day>1</day><start_time/><end_time/></CompanyBranchMemberDuty></data></response>

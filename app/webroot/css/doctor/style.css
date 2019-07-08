@@ -1,0 +1,167 @@
+// There is no required CSS for this plugin to work properly
+// but here is what is being used to style this demo
+.horizontal-nav {
+    background: #efefef;
+    border-radius: 6px;
+}
+.horizontal-nav ul {
+    background: #128F9A;
+    float: left;
+    text-align: center;
+    border-radius: 6px;
+    border: 1px solid #0e7079;
+	list-style-type: none;
+	list-style-position: inside;
+	padding-left: 0px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+.horizontal-nav ul li {
+    float: left;
+    border-left: 1px solid #0e7079;
+}
+.horizontal-nav ul li:first-child {
+    border-left: 0 none;
+}
+.horizontal-nav ul li a {
+    display: block;
+    padding: 10px 20px;
+    color: #fff;
+    border-top: 1px solid rgba(255,255,255, 0.25);
+    border-left: 1px solid rgba(255,255,255, 0.25);
+}
+.horizontal-nav ul li:first-child a {
+    border-left: 0 none;
+}
+.horizontal-nav ul li a:hover {
+    background: #12808a;
+}
+.horizontal-nav ul li:first-child a {
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+}
+.horizontal-nav ul li:last-child a {
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+div#patient-div input[type="text"], .top-login-pane input[type="password"]{
+	padding: 5px;
+	height: 15px;
+	width: 140px;
+	margin: 1px;
+}
+div#patient-profile-div input[type="text"], .top-login-pane input[type="password"] {
+	padding: 5px;
+	height: 15px;
+	width: 300px;
+	margin: 1px;
+}
+div#profile-div table input[type="text"]{
+	width:300px;
+	height:20px;
+	padding:5px;
+}
+div#profile-div table tr td,
+div#patient-profile-div table#profile-table tr td{
+	background:white;
+	padding:0px;
+	border: 0px solid;
+}
+div#profile-div table, div#patient-profile-div table#profile-table,
+div#personal-div table,
+div#hmo-div table#hmo-details,
+div#membership-div table#membership-list,
+div#organization-div table#organization-details
+{
+	width:50%;
+	clear:none;
+}
+div#report #tabvanilla #stats table#stat-filter{
+}
+div#report #tabvanilla #stats table#stat-filter td,
+div#report #tabvanilla #patient-lists table#patient-filter td,
+div#report #tabvanilla #prescriptions table#prescrip-filter td{
+	background:white;
+	border: 0px solid;
+	padding:0px 3px;
+}
+div#report #tabvanilla #stats table#stat-filter td input,
+div#report #tabvanilla #patient-lists table#patient-filter td input{
+	margin-right:10%;
+}
+div#report #tabvanilla #stats input[type=text],#report #tabvanilla #stats table#stat-filter input[type=text],
+div#report #tabvanilla #patient-lists input[type=text],#report #tabvanilla #patient-lists table#patient-filter input[type=text],
+div#report #tabvanilla #prescriptions input[type=text],#report #tabvanilla #prescriptions table#prescrip-filter input[type=text]
+{
+	padding: 5px;
+	height: 15px;
+	width: 170px;
+	margin: 1px;
+}
+div#report #tabvanilla #stats table#stat-filter select,
+div#report #tabvanilla #patient-lists table#patient-filter select
+{
+	padding: 5px 5px;
+	width: 182px;
+}
+div#report #tabvanilla #stats table#stat-prescrip,
+div#report #tabvanilla #patient-lists table#patient-result-list
+/*div#profile #tabvanilla #hmo-div table#hmo-list*/
+{
+	width:90%;
+}
+div#report.tabdiv.ui-tabs-panel div#tabvanilla.widget-result li,
+div#profile.tabdiv.ui-tabs-panel div#tabvanilla.widget-result li
+ {
+	margin-left:0px;
+}
+div#profession-div table
+{
+	width:80%;
+	clear:none;
+}
+div#profession-div table input[type="text"],
+div#personal-div table input[type="text"],
+div#hmo-div table#hmo-details input[type="text"],
+div#membership-div table#membership-list input[type="text"],
+div#organization-div table#organization-details input[type="text"]
+/*,div#clinic-div table input[type="text"]*/
+{
+	width:300px;
+	height:15px;
+	padding:5px;
+}
+div#profession-div table tr td,
+div#personal-div table tr td,
+div#clinic-div table#clinic-details-1 tr td,
+div#clinic-div table#clinic-details-2 tr td,
+div#hmo-div table#hmo-details tr td,
+div#membership-div table#membership-list tr td,
+div#organization-div table#organization-details tr td
+{
+	background:white;
+	padding:1px;
+	border: 0px solid;
+}
+div#profession-div table tr,
+div#personal-div table tr,
+div#clinic-div table tr
+{
+}
+div#clinic-div table#clinic-details-1{
+	width:45%;
+	clear:none;
+	margin-bottom:5px;
+}
+div#clinic-div table input[type="text"]
+{
+	width:150px;
+	height:20px;
+	padding:5px;
+}
+div#profile #tabvanilla #clinic-div table#clinic-details-1 select,
+div#profile #tabvanilla #clinic-div table#clinic-details-2 select
+{
+	padding: 5px 5px;
+	width: 162px;
+}

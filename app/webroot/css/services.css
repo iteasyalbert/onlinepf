@@ -1,0 +1,102 @@
+.visits_tbl td {width: 16%; height: 100%; text-align: justify; padding: 3px 5px;}
+table#double-td-tbl2 {font-size:14px;}
+
+input[type=text]:focus, input[type=password]:focus, input.text:focus, textarea:focus{ border-color:#617b00; }
+
+#services {margin: 10px 5px;}
+	.subTitle {font: bold 12px Verdana, Geneva, sans-serif; color: #006; line-height: 2em; margin: 10px 0 0 10px;}	
+	.labguidelink a, .labguidetest a {font: bold 12px Verdana, Geneva, sans-serif; color: #33F; text-decoration: none; line-height: 1.5em;}	
+	.labguidelink a:hover, .labguidetest a:hover {color: #F33; outline: 1px solid #F33;}	
+	.labguideicon {vertical-align: middle;}
+	#services .desc {font-size: 11px; font-family: Verdana, Geneva, sans-serif; width: 95%; margin: 10px auto 30px;  color:#333;}
+	#services .desc2 {font-size: 11px; font-family: Arial; width: 95%; margin: 20px auto 5px;}
+	#services .list {font: normal 11px Verdana, Geneva, sans-serif; padding-left: 80px;}
+	#services .inpatient {margin: 10px auto 50px; font-size:11px; font-family: Verdana, Geneva, sans-serif;}	
+		#services table.tblpckage tr:not(.tdShade2) td:not(.tdshade) {border-bottom: 1px solid #DDD; border-right: 1px solid #DDD; padding: 2px 7px;}
+		#services table.tblpckage tr:not(.tdShade2) td:not(:first-child) {text-align: right;}
+		#services table.tblpckage tr:not(.tdShade2):hover {background: #FFEAEB;}
+		#services table.tblpckage tr.total td {font-weight: bold;}
+		#services table .tdShade {background:#333;color:#FFFFFF;text-align: center;font-weight: bold;height: 35px;}
+		#services table .tdShade2 td {background: #CCC; padding: 3px; text-align: center;}
+	#services .reminders {width: 80%; margin: auto; background: #F66;padding: 2px 5px; }
+		#services .reminders .title {font: bold 12px Verdana, Geneva, sans-serif; color:#00C; margin: 5px;}
+		#services .reminders .note {padding-left: 0; list-style: inside; font: normal 12px Verdana, Geneva, sans-serif; line-height: 2em; color:#FFF;}
+		#services .reminders .contact {font: bold 12px Verdana, Geneva, sans-serif; color:#000;}
+		#services .reminders .number {font: bold 12px Verdana, Geneva, sans-serif; color:#900;}
+		#services .guidelines .title {font: bold 14px Verdana, Geneva, sans-serif; margin-top: 20px;}
+		#services .guidelines ol {margin-left:5px; padding-left: 0; font: normal 11px Verdana, Geneva, sans-serif; color:#333;}
+		#services .guidelines li {margin: 10px auto; width: 90%;}
+	#services .outpatient {margin: 0 auto 50px; font-size:11px; font-family: Verdana, Geneva, sans-serif;}	
+	#services .packages {margin: 0; line-height: 1.4em;}	
+	#services .opList {margin-left: 10px; line-height: 1.4em;}	
+	#services .opListindent {margin-left: 30px; line-height: 1.3em; color:#666;}	
+	#services .opListindent:before {content: '> ';}	
+	#services .price {height: 15px; margin-right:5px; line-height:2.0em; text-align:center; font-weight:bold; border-top:1px solid #666;}	
+	#services .heartPackage {height: 65px;}
+	#services .packageTitle {font: bold 14px Verdana, Geneva, sans-serif; text-align: center; margin-top: 30px; margin-bottom: 5px;}
+	#services .images {margin-top: 10px; text-align: center;}
+	#services .ipList {margin-left: 10px; line-height: 1.4em;}	
+	#services .ipListindent {margin-left: 30px; line-height: 1.3em; color:#666;}
+	#services .ipListindent2 {margin-left: 60px; line-height: 1.3em; color:#666;}	
+	#services .ipListindent:before {content: '> ';}	
+	#services .lightshade {background:#CCC;color:#333;text-align: center;font-weight: bold;height: 15px;}	
+	#services .ipprice {height: 10px; margin-right:5px; text-align:center; font-weight:bold;}	
+#faqs {}
+	#faqs .question {color: #00C; font: bold 11px Verdana, Geneva, sans-serif; margin: 10px 0 5px 0;}
+	#faqs .question:before {content: 'Q. ';}
+	#faqs .answer {font: normal 11px Verdana, Geneva, sans-serif; margin: 5px 20px 10px 20px; text-indent: 40px;}
+	#faqs .roomList {margin: 5px 10px 10px 40px; font: normal 11px Verdana, Geneva, sans-serif;}
+	
+	#faqsTable  {font-size: 11px; font-family: 'Microsoft Sans Serif'; width: 95%; margin: 10px auto;}
+		#faqsTable .categ {color:#FFF; background: #333; border: 1px solid #FFF; padding: 5px;}
+		#faqsTable .faq {width: 12%; border: 1px solid #FFF; padding: 5px; text-align:center; background:#CCC; }
+		#faqsTable .ans {width: 22%; border: 1px solid #CCC; padding: 10px 5px 5px 5px; text-align:center;}
+		#faqsTable ol {padding-left: 0px; text-align: left; margin: 0 10px; padding-left: 15px;}
+	
+#schedule {font-size: 11px; font-family: Verdana, Geneva, sans-serif; border-bottom: 1px solid #000}
+	#schedule .sched {width: 50%; padding: 5px; text-align: center; border-right: 1px solid #000; border-bottom: 1px solid #000;}
+	#schedule .day {width: 10%; padding: 5px; text-align: center; border-right: 1px solid #000; border-bottom: 1px solid #333;}
+	#schedule .clinic {width: 23%; padding: 5px; border-left: 1px solid #000;border-right: 1px solid #000; border-bottom: 1px solid #333;}
+	#schedule .time {width: 20%; padding: 5px; text-align: center; border-right: 1px solid #000; border-bottom: 1px solid #333;}
+	#schedule .room {width: 7%; padding: 5px; text-align: center; border-right: 1px solid #000; border-bottom: 1px solid #333;}
+	#schedule .shade {background: #999;}
+	#schedule .schedCat {background: #333; color: #FFF; text-align: center; border-bottom: 1px solid #000;}
+	#schedule .schedCat2 {background: #666; color: #FFF; text-align: center; border-bottom: 1px solid #000;}
+
+#treatment {margin: 10px 5px;}
+	#treatment .article {font: normal 11px Verdana, Geneva, sans-serif; margin: 10px auto; width:95%;}
+	#treatment .treatmentTable {width: 99%; margin: 10px auto 50px;font: normal 11px Verdana, Geneva, sans-serif;}
+	#treatment .tableCat {background:#333; color: #FFF; text-align: center; font: bold 10px Verdana, Geneva, sans-serif; padding: 2px 5px; border: 1px solid #FFF;}
+	#treatment .plan {padding: 2px 5px; border: 1px solid #666; text-align: right;}
+	#treatment .procedure {width: 45%; padding: 2px 5px; border: 1px solid #666;}
+	#treatment .proced {background: #CCC;}
+	#treatment .subproced {padding-left: 15px;}
+	#treatment .days {width: 10%; padding: 2px 5px; border: 1px solid #666; text-align:center;}
+	#treatment .articleTitle{font: bold 11px Verdana, Geneva, sans-serif;  margin-top: 15px;}
+	#treatment .unordered {font:normal 11px Verdana, Geneva, sans-serif; margin: 10px 15px 15px 10px; color:#333;}
+
+#vtour {margin: 10px 5px;}
+	#vtour .article {font: normal 11px Verdana, Geneva, sans-serif; margin: 20px auto; width:95%; color:#333;}
+	#vtour .article a {color: #06F; text-decoration:none;}
+	#vtour .article a:hover {text-decoration:underline;}
+	#vtour .sub {font: bold 11px Verdana, Geneva, sans-serif; margin: 0 20px;}
+	#vtour .subCenter {font: bold 11px Verdana, Geneva, sans-serif; margin: 20px 0; text-align: center;}
+	#vtour .ordered {font: normal 11px Verdana, Geneva, sans-serif; margin:5px 0 10px 15px;color:#333;}
+	#vtour .ordered li {margin-bottom: 10px;}
+	#vtour .images {margin-top: 10px; text-align: center;}
+	#vtour .images img {width: 95%;}
+	#vtour .rad td {text-align:center; vertical-align: middle;}
+	#vtour .rad td img {border:none;}
+.mainCat {font-size:16px; font-family: Arial, Helvetica, sans-serif; font-weight:bold; border-bottom: 1px solid #999; line-height: 2em;}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

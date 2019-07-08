@@ -1,0 +1,109 @@
+.membership_type{
+	margin: 0px 10px 20px 0;
+}
+	.membership_type input {
+		margin: 2px 2px 0 15px;
+	}
+	
+* {
+	margin: 0;
+	padding: 0;
+}
+
+
+.widget-result {
+	/*width: 310px;
+	margin: 10px;*/
+	padding: 10px;
+	background: #FFFAE4;
+	border: 1px solid #BFB092;
+	margin-bottom: 15px;
+}
+
+.widget-result a {
+	color: #222;
+	text-decoration: none;
+}
+
+.widget-result a:hover {
+	color: #009;
+	text-decoration: underline;
+}
+
+.tabnav li {
+	display: inline;
+	list-style: none;
+	padding-right: 5px;
+}
+
+.tabnav li a {
+	text-decoration: none;
+	text-transform: uppercase;
+	color: #222;
+	font-weight: bold;
+	padding: 4px 6px;
+	outline: none;
+}
+
+.tabnav li a:hover, .tabnav li a:active, .tabnav li.ui-tabs-selected a {
+	background: #dedbd1;
+	color: #222;
+	text-decoration: none;
+}
+	
+.tabdiv {
+	margin-top: 2px;
+	background: #fff;
+	border: 1px solid #BFB092;
+	padding: 5px;
+}
+
+.tabdiv li {
+	list-style-image: url("star.png");
+	margin-left: 20px;
+}
+
+.ui-tabs-hide {
+	display: none;
+}
+
+#featuredvid {
+	text-align: center;
+}
+
+.fvid {
+	margin-bottom: 5px;
+}
+
+.vidselector li {
+	text-align: left;
+	list-style: none;
+	padding: 5px;
+	background: #ffffff;
+	border: 1px solid #dedbd1;
+	text-transform: uppercase;
+	margin-bottom: 5px;
+}
+div#profile-div input[type="text"], .top-login-pane input[type="password"] {
+	padding: 5px;
+	height: 15px;
+	width: 300px;
+	margin: 1px;
+}
+
+div#profile-div select{
+	padding: 5px;
+	width: 312px;
+	margin: 1px;
+}
+#history-div label{
+	margin:0 20px 0 5px;
+}
+div#profile-div table tr td{
+	background:white;
+	padding:0px;
+}
+div#profile-div table{
+	width:65%;
+	clear:none;
+}

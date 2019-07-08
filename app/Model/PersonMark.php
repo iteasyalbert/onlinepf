@@ -1,0 +1,42 @@
+<?php
+App::uses('AppModel', 'Model');
+/**
+ * PersonInsurance Model
+ *
+ * @property Person $Person
+ * @property InsuranceProviderProduct $InsuranceProviderProduct
+ */
+class PersonMark extends AppModel {
+
+/**
+ * Use table
+ *
+ * @var mixed False or table name
+ */
+
+/**
+ * Display field
+ *
+ * @var string
+ */
+	public $displayField = 'id';
+
+
+	//The Associations below have been created with all possible keys, those that are not needed can be removed
+
+/**
+ * belongsTo associations
+ *
+ * @var array
+ */
+	public $useTable ='person_marks';
+	public $belongsTo = array(
+		'Person' => array(
+			'className' => 'Person',
+			'foreignKey' => 'person_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		)
+	);
+}

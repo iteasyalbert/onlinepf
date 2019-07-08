@@ -1,0 +1,101 @@
+html {min-height: 100%;}
+body {background:url(../../img/heartcenter/background.jpg) no-repeat center top fixed;-webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;}
+#wrapper {width:900px; margin: auto;}
+#top {background: url(../../img/heartcenter/top.png) no-repeat center bottom; height: 15px;}
+#left {background: url(../../img/heartcenter/left.png) repeat-y; width: 10px;}
+#middle {background: #FFF; width: 880px;}
+#right {background:url(../../img/heartcenter/right.png) repeat-y; width: 10px;}
+#footer {width: 900px; font: 12px normal Verdana, Geneva, sans-serif;}
+	#footer .left {background: url(../../img/heartcenter/left.png) repeat-y; width: 10px;}
+	#footer .middle {background: #FFF; width: 860px; padding: 20px 5px 0 5px; text-align: center;}
+		#footer .middle a {color: #06F; padding: 0 15px; font: normal 9px  Verdana, Geneva, sans-serif; border-right: 1px solid #0099FF; text-decoration: none;}
+		#footer .middle .last { border: none}
+		#footer .middle a:hover {text-decoration: underline;}
+	#footer .middlelink {background: #FFF; width: 750px; padding: 20px 5px 0 5px; text-align: center;}
+		#footer .middlelink a {color: #06F; font:  bold 12px Verdana, Geneva, sans-serif; text-decoration: none;}
+		#footer .middlelink a:active {color: #00C; font:  bold 12px Verdana, Geneva, sans-serif; text-decoration: none;}
+	#footer .right {background:url(../../img/heartcenter/right.png) repeat-y; width: 9px;}
+#bottom {background: url(../../img/heartcenter/bottom.png) no-repeat center top; height: 15px;}
+#head {background: url(../../img/heartcenter/logo.png) no-repeat; height:130px;}
+#navbar {width: 100%; height: 40px; font: 11px norman Verdana, Geneva, sans-serif; background: url(../../img/heartcenter/navbar2.png) no-repeat center center ; color:#FFF; }
+	#navbar td {padding: 0 1px 0 1px;}
+	#navbar .ghover a:hover { background: url(../../img/heartcenter/green.png)}
+	#navbar .gcurrent a { background: url(../../img/heartcenter/green.png)}
+	#navbar .ohover a:hover { background: url(../../img/heartcenter/orange.png)}
+	#navbar .ocurrent a { background: url(../../img/heartcenter/orange.png)}
+	#navbar .yhover a:hover { background: url(../../img/heartcenter/yellow.png)}
+	#navbar .ycurrent a { background: url(../../img/heartcenter/yellow.png)}
+	#navbar .phover a:hover { background: url(../../img/heartcenter/purple.png)}
+	#navbar .pcurrent a { background: url(../../img/heartcenter/purple.png)}
+	#navbar .bhover a:hover { background: url(../../img/heartcenter/blue.png)}
+	#navbar .bcurrent a { background: url(../../img/heartcenter/blue.png)}
+	#navbar .whover a:hover { background: url(../../img/heartcenter/white.png)}
+	#navbar .wcurrent a { background: url(../../img/heartcenter/white.png)}
+	#navbar td {width: 16%; height: 100%; text-align: center;}
+	#navbar a {display: block; text-decoration:none; color:#FFF; line-height: 2.3em;}
+#sideNav {width: 240px; font-family: Arial, Helvetica, sans-serif; margin-left: 5px; float: left;}
+	#sideNav .menuCat {background: url(../../img/heartcenter/sidenav.png) no-repeat center center #fff; font: bold 11px Arial, Helvetica, sans-serif; color:#FFF; line-height: 25px; padding-left: 5px; margin-top: 10px;}
+	#sideNav .menuCat2 {background: url(../../img/heartcenter/sidenav.png) no-repeat center center #fff; font: bold 11px Arial, Helvetica, sans-serif; color:#FFF; line-height: 25px; padding-left: 5px; margin-top: 10px;}
+	#sideNav .indent { margin-left: 10px;}
+	#sideNav .indent2 { margin-left: 20px;}
+	#sideNav .submenuCat {font: bold 10px Verdana, Geneva, sans-serif; line-height: 20px; border-bottom: 1px solid #999; width: 95%; margin: auto;}
+	#sideNav ul {padding: 0; margin: 0;}
+	#sideNav .li2 {list-style: none; font-size: 11px; line-height: 20px;}
+	#sideNav li {list-style: none; font-size: 11px; line-height: 25px;}
+	#sideNav .directTable {background: #E6E6E6; padding: 12px 5px; color:#333;}
+		#sideNav .direct {font-family: Arial, Helvetica, sans-serif; font-size:11px; line-height: 2em;}
+		#sideNav .direct td {border-bottom: solid 1px #999;}
+		#sideNav .direct td .last {border-bottom: solid 1px #999;}
+		#sideNav .local {float: right; font-weight:bold;}
+	#sideNav li a:hover {background: #FF8484; color: #000;}
+	#sideNav a {color: #554; display: block; text-decoration: none; padding-left: 10px; border-bottom: solid 1px #CCC;}
+	#sideNav .acc {margin-top: 20px; text-align: justify; padding: 5px;}
+		#sideNav .acc td {padding:5px 0;}
+		#sideNav .acc .description {font: 11px normal Verdana, Geneva, sans-serif;  text-indent: 0;}
+		#sideNav .acc .logo img {padding-right: 5px; float:left; border: none; width: 30px;}
+		#sideNav .acc a {color: #06F; text-decoration:none; border-bottom: none; -moz-outline-style: none; display: inline; padding: 0px;}
+#content {width: 632px; float: right; margin: auto; background: #fff; min-height: 500px;}
+	#announcement {font: 11px normal Verdana, Geneva, sans-serif; width: 440px;}
+		#announcement .title {font: bold 14px Arial, Helvetica, sans-serif; color: #666; border-bottom: 1px solid #999;}
+		#announcement .subtitle {padding-top: 2px; padding-left: 5px; padding-right: 10px;}
+		#announcement .subtitle_desc {padding-bottom: 2px; padding-left: 10px; color:#333;}
+		#announcement .subtitle:hover {background: #FFE8EA;}
+		#announcement .subtitle_desc a {text-decoration: none; color: #06F;}
+		#announcement .subtitle a:hover { text-decoration: underline;}
+		#announcement .update { width: 95px; color: #666; margin-right: 5px;}
+		#announcement .comment { padding: 0 5px; color: #333; text-indent: 20px; line-height: 1.1em;}
+	#object {width: 30%; float: left; padding: 0 2px 0 0; font:11px normal Verdana, Geneva, sans-serif;}
+		#object .title {font: bold 14px Arial, Helvetica, sans-serif; color: #666; border-bottom: 1px solid #999;}
+		#object .subtitle {padding-top: 2px; padding-left: 5px;}
+		#object .spotimage img { width: 100%; height: 100%; border:none;}
+		#object .spotimagehigh:hover a {color: #C00;}
+		#object .subtitle a:hover { text-decoration: underline;}
+		#object a { color: #06F; text-align: right; margin-right: 5px; text-decoration:none;}
+		#object .more a:hover { text-decoration:underline;}
+	#announcement_top {float: left; padding: 0 5px; font:11px normal Verdana, Geneva, sans-serif; height:300px;}
+		#announcement_top .title {font: bold 14px Arial, Helvetica, sans-serif; color: #666; border-bottom: 1px solid #999;}
+		#announcement_top .desc {padding: 5px 10px;}
+		#announcement_top a { color: #06F; text-align: right; margin-right: 5px; text-decoration:none;}
+		#announcement_top a:hover { text-decoration:underline;}
+#clearer {clear: both;}
+.updated {color: #FFF; font: bold 11px Verdana, Geneva, sans-serif; text-align: center;}
+.heading1 {font-size:16px; font-family: Arial, Helvetica, sans-serif; font-weight:bold; border-bottom: 1px solid #999; line-height: 2em;}
+.heading2 {font: bold 16px 'Microsoft Sans Serif'; margin: 10px 0;}
+.heading3 {font:bold 18px Verdana, Geneva, sans-serif; margin: 50px auto 10px;}
+.bold {font-weight: bold;}
+.oblique {font-style:oblique}
+.centerAlign {text-align:center}
+.leftAlign {text-align:left}
+.rightAlign {text-align:right}
+.justify {text-align:justify}
+.down { float: right; margin: 0 10px; border: none;}
+
+#announcement .subtitle a {text-decoration: none !important;}
+
+/****
+	Additional Css
+	Ted Miranda
+****/
+td{padding:0px;}
+#pdfFrameModal {display:block;}
+
