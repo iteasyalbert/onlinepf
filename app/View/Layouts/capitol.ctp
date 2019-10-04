@@ -8,15 +8,22 @@
     <meta name="format-detection" content="telephone=no">
     <link rel="profile" href="http://gmpg.org/xfn/11">
 
-    <?php echo $this->Html->css('bootstrap.min.css')?>  
-
-    <script src="/js/capitol/jquery.js.download" type="text/javascript"></script>
-    
     <title>Online Result - Capitol Medical Center | Quezon Ave., Quezon City</title>
-
+    <!-- CAPITOL JS -->
+    <script src="/js/capitol/jquery.js.download" type="text/javascript"></script>
+    <!-- DEFAULT JS -->
+    <script src="/js/angular.min.js"></script>  
+    <script src="/js/angular-resource.min.js"></script>  
+    <script src="/js/jquery-ui.min.js"></script>
+    <script src="/js/angularjs/app.module.js"></script>
+    <?php echo $this->Html->script('bootstrap.min.js')?>
+    <!-- DEFAULT STYLE -->
+    <link rel="stylesheet" type="text/css" href="/css/general.css">
+    <link rel="stylesheet" href="/css/jquery-ui.min.css">
+    <?php echo $this->Html->css('bootstrap.min.css')?> 
     <!-- CAPITOL LAYOUT CSS -->
     <link type="text/css" media="all" href="/css/capitol/autoptimize_761b753ec93ff5ed77bc8a0c416a3b69.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/capitol/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="icon" href="/img/capitol/favicon-32x32.png" sizes="32x32">
     <link rel="stylesheet" href="/css/capitol/capitol_layout.css">
     
@@ -64,6 +71,7 @@
                  <div class="container-fluid">
                    <ul class="nav navbar-nav">
                      <li><a href="/admin/audit_logs/index">Audit Logs</a></li>
+                     <li><a href="/admin/audit_logs/utilization">Utilization Report</a></li>
                      <li><a href="/admin/users/index">Users</a></li>
                    </ul>
                  </div>
@@ -214,7 +222,7 @@
         </footer>
     </div>
    
-    <?php echo $this->Html->script('bootstrap.min.js')?>
+    
 </body>
 
 </html>

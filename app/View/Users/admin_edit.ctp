@@ -1,6 +1,5 @@
 <?php //debug($data);?>
 <?php //debug($this->request->data);?>
-<link rel="stylesheet" type="text/css" href="/css/general.css">
 
 <div class="row lis-container">
   <div class="lis-center-container lis-login-container">
@@ -38,10 +37,3 @@
     </form>
   </div>
 </div>
-<script type="text/javascript">
-
-  // jQuery('input:password').keyup(function(e){
-  //     if(jQuery('#password').val() != jQuery('#confirm_password').val())
-  //       jQuery(':submit').attr('disabled','disabled');
-  // });
-</script>

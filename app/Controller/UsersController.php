@@ -35,7 +35,7 @@ class UsersController extends AppController {
 		$this->layout = Configure::read('page_layout');
 		if($this->Session->read('User.isAuthorized'))
 			if($this->Session->read('User.role') == "ROLE_PHYSICIAN")
-				$this->redirect('/physician/physicians/profile');
+				$this->redirect('/physicians/dashboard');
 			elseif($this->Session->read('User.role') == "ROLE_PATIENT")
 				$this->redirect('/patient/patients/profile');
 			elseif($this->Session->read('User.role') == "ROLE_ADMIN")
@@ -133,6 +133,7 @@ class UsersController extends AppController {
 					            $this->Session->write('User.role', $get_person->data->role);
 					            $this->Session->write('User.mobile', $get_person->data->mobile);
 					            $this->Session->write('User.name', $get_person->data->firstname.' '.$get_person->data->lastname );
+					            $this->Session->write('User.practitioner_external_id', $get_person->data->practitioner_external_id );
 					            $mobile_no = trim($get_person->data->mobile);
 				            }else{
 				            	$this->Session->write('User.id', $get_person->data->user_id);
@@ -142,7 +143,7 @@ class UsersController extends AppController {
 				            }
 
 				            if($get_person->success && $get_person->data->role){
-								if($get_person->data->role != 'ROLE_ADMIN'){ // If not admin role
+								if($get_person->data->role != 'ROLE_ADMIN' && Configure::read('sms_api.enable')){ // If not admin role
 									if(empty($mobile_no)){
 										$this->Session->destroy();
 										$error['status'] = 1;
@@ -197,7 +198,7 @@ class UsersController extends AppController {
 									}
 									if(!$error['status']){
 										if($this->check_result_vcode() != 'verified'){
-											if($this->sendmessage($person)){
+											if(!$this->sendmessage($person)){
 												$pname = ($get_person->data->role=='ROLE_PHYSICIAN'?'Doctor: ': 'Patient: ').strtoupper($get_person->data->name);
 												$error['message'] = $pname;
 												$error['verified'] = false;
@@ -260,6 +261,7 @@ class UsersController extends AppController {
 									$this->Session->write('User.isAuthorized', true);
 									$error['verified'] = true;
 									$error['role'] = $get_person->data->role;
+									$error['last_url'] = $this->Cookie->read('last_url');
 									$send_audit = $this->addAuditLog('user.login',array(
 										'username'=>$this->data['User']['username'],
 										'success'=>'true',
@@ -294,7 +296,7 @@ class UsersController extends AppController {
 						}
 		            }else{
 		            	$error['status'] = 1;
-		            	$error['message'] = 'An error occured. Please contact administrator.';
+		            	$error['message'] = $decoded_respo['message'].' An error occured. Please contact administrator.';
 		            }
 				} catch (Exception $e) {
 					$error['status'] = 1;
@@ -620,7 +622,7 @@ class UsersController extends AppController {
 	}
 	
 	function admin_index($page=null){
-		$this->layout = Configure::read('page_layout');
+		// $this->layout = Configure::read('page_layout');
 		if(!$this->Session->read('User.isAuthorized')){
 			$this->redirect('/users/signout');
 		}
@@ -725,7 +727,7 @@ class UsersController extends AppController {
     }
 
     public function admin_edit($username = null) {
-    	$this->layout = Configure::read('page_layout');
+    	// $this->layout = Configure::read('page_layout');
     	if($this->request->is('get')){
 	        try {
 				ini_set('default_socket_timeout', 10);

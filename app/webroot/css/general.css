@@ -1,3 +1,5 @@
+html, body {height: 100%}
+.container{min-height: 100%;}
 .lis-container {
 	width: 100%;
 	background-color: #fff;
@@ -101,9 +103,12 @@
     top: 23px;
 }
 
-
-
 .patient_orders_tbl thead tr th {
 	background-color: #3695eb;
 	color: #ffffff;
 }
+
+.patient_orders_tbl tr {
+	cursor: pointer;
+}
+ 

@@ -75,6 +75,7 @@ class AppController extends Controller{
 		// $this->loadModel('AuditLog');
 		$audit=array();
 		$agent=$this->getBrowser();
+		$audit['user_id']=$this->Session->read('User.id');
 		$audit['datetime']=date('Y-m-d H:i:s');
 		$audit['url']=$this->here;
 		$audit['action']=$action;

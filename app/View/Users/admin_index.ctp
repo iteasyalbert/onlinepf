@@ -1,16 +1,7 @@
-<?php //debug($data);?>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>  
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-resource.min.js"></script>  
+<?php //debug($data);?>  
 <link rel='stylesheet' href='/css/loading-bar.min.css' type='text/css' media='all' />
- <script type='text/javascript' src='/js/loading-bar.min.js'></script>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-<style type="text/css">
-  .patient_orders_tbl th {
-      cursor: pointer;
-  }
-</style>
-<link rel="stylesheet" type="text/css" href="/css/general.css">
+<script type='text/javascript' src='/js/loading-bar.min.js'></script>
+<script src="/js/angularjs/controllers/users.controller.js"></script>
 
 <div class="lis-container" style="padding-top: 0;" ng-app="mro" ng-controller="usersCtrl" ng-init="getUsers()">
     <div class="lis-center-container">
@@ -34,7 +25,7 @@
           </tbody>
         </table>
 
-        <table class="table table-hover patient_orders_tbl table-striped">
+        <table class="table table-hover patient_orders_tbl">
           <thead>
             <tr>
               <th class="hidden-xs hidden-sm col-md-2" scope="col" ng-click="sort('username')">
@@ -82,77 +73,8 @@
 </div>
 
 <script type="text/javascript">
-  // if (typeof jQuery != 'undefined') {  
-  //     // jQuery is loaded => print the version
-  //     alert(jQuery.fn.jquery);
-  // }
   jQuery(document).ready(function(){
     jQuery( ".datepicker" ).datepicker({ dateFormat: 'yy-mm-dd' }).datepicker().datepicker("setDate", new Date());
-  });
-  var app = angular.module('mro', ['ngResource','angular-loading-bar'])
-
-  app.controller('usersCtrl', [ '$http', '$scope', '$filter', function($http, $scope, $filter){
-    $scope.users = [];
-    $scope.totalPages = 0;
-    $scope.currentPage = 1;
-    $scope.range = [];
-
-    $scope.sort = function(keyname){
-        $scope.sortKey = keyname;   //set the sortKey to the param passed
-        $scope.reverse = !$scope.reverse; //if true make it false and vice versa
-    }
-
-    $scope.getUsers = function(pageNumber){
-
-      if(pageNumber===undefined){
-        pageNumber = '1';
-      }
-
-      $http({
-        method : "POST",
-        url : '/users/getUsers/'+pageNumber,
-        data: { username: $scope.username , name: $scope.name, role: $scope.role }
-      }).then(function mySuccess(response) {
-        // console.log(response.data.data.data);
-        respo_data = response.data.data;
-        if(response.data.error.status)
-            alert(response.data.error.message)
-        else{
-          
-
-          $scope.users        = respo_data.data;
-          $scope.totalPages   = respo_data.last_page;
-          $scope.currentPage  = respo_data.current_page;
-
-          // Pagination Range
-          var pages = [];
-
-          for(var i=1;i<=respo_data.last_page;i++) {          
-            pages.push(i);
-          }
-
-          $scope.range = pages;
-        }
-      }, function myError(response) {
-          alert(response.statusText);
-      });
-    };
-  }]);
-</script> 
-<script>
-  app.directive('patientOrdersPagination', function(){  
-     return{
-        restrict: 'E',
-        template: '<ul class="pagination">'+
-          '<li ng-show="currentPage != 1"><a href="javascript:void(0)" ng-click="getUsers(1)">«</a></li>'+
-          '<li ng-show="currentPage != 1"><a href="javascript:void(0)" ng-click="getUsers(currentPage-1)">‹ Prev</a></li>'+
-          '<li ng-repeat="i in range" ng-class="{active : currentPage == i}">'+
-              '<a href="javascript:void(0)" ng-click="getUsers(i)">{{i}}</a>'+
-          '</li>'+
-          '<li ng-show="currentPage != totalPages"><a href="javascript:void(0)" ng-click="getUsers(currentPage+1)">Next ›</a></li>'+
-          '<li ng-show="currentPage != totalPages"><a href="javascript:void(0)" ng-click="getUsers(totalPages)">»</a></li>'+
-        '</ul>'
-     };
   });
 </script>
 

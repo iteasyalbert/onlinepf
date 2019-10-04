@@ -1,13 +1,295 @@
 <?php
 App::uses('AppController', 'Controller');
 class PhysiciansController extends AppController {
-	var $uses = array('Patient','Physician','StreetCode','VillageCode','TownCityCode','ProvincialRegion','LaboratoryTestGroup','LaboratoryTestGroupPrice','InsuranceProviderProduct','Address','LaboratoryAddress','Laboratory','ProvincesStatesCode','ContactInformation','LaboratoryContactInformation');
-	public $components = array('RequestHandler','HCWService','PaginatorArray','Common');
+	public $components = array('RequestHandler','Common');
+
 	function beforeFilter()
 	{
 		parent::beforeFilter();
 	}
 
+	public function dashboard(){
+		$this->layout = 'professionalfee';
+		
+		if(!$this->Session->read('User.isAuthorized')){
+			$this->redirect('/users/signout');
+		}
+	}
+
+	public function getPatients($page=null){
+		$this->layout = false;
+		$myrequest = array();
+		$myrequest['error']['message'] = "";
+		$myrequest['error']['status'] = false;
+		try {
+			ini_set('default_socket_timeout', 10);
+			
+			$HttpSocket = new HttpSocket();
+			$data = $this->data;
+            $request = array(
+            				'header' => array(
+            					'Accept'=>'application/json',
+            					'Content-Type' => 'application/json',
+            					'Authorization'=> 'Bearer'.' '.$this->Session->read('api.access_token'),
+							),
+						);
+            // $data = json_encode($data);
+            $response = $HttpSocket->get(Configure::read('api.domain_name').'/api/physician/get_practitioner_px?page='.$page, $data,$request);
+            $this->log(json_decode($response), 'apirespo_get_practitioner_px');
+            $decoded_respo = json_decode($response);
+            if($decoded_respo->success){
+            	$filter = "";
+				foreach ($this->data as $key => $value) {
+					$filter .= $key.'='.$value;
+				}
+            	$send_audit = $this->addAuditLog('get_practitioner_px',array(
+					'success'=>true,
+					'message'=>(empty($filter)?count($decoded_respo->data->data).' result(s) found using default filter.':count($decoded_respo->data->data).' result(s) found using filter '.$filter)
+				));
+		    	try {
+					ini_set('default_socket_timeout', 10);
+					
+					$HttpSocket = new HttpSocket();
+					$data = $send_audit;
+		            $request = array(
+										'header' => array('Content-Type' => 'application/json','Accept'=>'application/json',
+									),
+								);
+		            $data = json_encode($data);
+		            $HttpSocket->post(Configure::read('api.domain_name').'/user/audit', $data, $request);
+				} catch (Exception $e) {
+					$this->log($e->getMessage(), 'apirespo_audit_log');
+				}
+            	
+            	$myrequest['data'] = $decoded_respo->data;
+            }else{
+            	$send_audit = $this->addAuditLog('get_practitioner_px',array(
+					'success'=>false,
+					'message'=>$decoded_respo->message
+				));
+		    	try {
+					ini_set('default_socket_timeout', 10);
+					
+					$HttpSocket = new HttpSocket();
+					$data = $send_audit;
+		            $request = array(
+										'header' => array('Content-Type' => 'application/json','Accept'=>'application/json',
+									),
+								);
+		            $data = json_encode($data);
+		            $HttpSocket->post(Configure::read('api.domain_name').'/user/audit', $data, $request);
+				} catch (Exception $e) {
+					$this->log($e->getMessage(), 'apirespo_audit_log');
+				}
+            	$myrequest['error']['message'] = $decoded_respo->message;
+            	$myrequest['error']['status'] = true;
+            }
+            
+		} catch (Exception $e) {
+			$myrequest['error']['message'] = $e->getMessage();
+			$myrequest['error']['status'] = true;
+			$this->log($e->getMessage(), 'apirespo_get_practitioner_px');
+		}
+    	$this->set('data', $myrequest);
+    	$this->header('Content-Type: text/json');
+    	$this->render('/Common/json');
+	}
+
+	public function professional_fee($visit_number, $patient_id, $practitioner_id){
+		$this->layout = 'professionalfee';
+		
+		if(!$this->Session->read('User.isAuthorized')){
+			$this->Cookie->write('last_url', $this->params->here, true, 3600);
+			$this->redirect('/users/signout');
+		}else{
+			if($this->Session->read('User.practitioner_external_id') != $practitioner_id){
+				$this->redirect('/users/signout');
+			}
+			$data = $this->view_transaction($visit_number, $patient_id, $practitioner_id);
+			$this->set('data', $data);
+		}
+	}
+
+	public function view_transaction($visit_number, $patient_id, $practitioner_id){
+		$this->layout = 'professionalfee';
+		if(!$this->Session->read('User.isAuthorized')){
+			$this->redirect('/users/signout');
+		}
+		// $myrequest = array();
+		// $myrequest['error']['message'] = "";
+		// $myrequest['error']['status'] = false;
+		// TODO check if already posted.
+		try {
+			ini_set('default_socket_timeout', 10);
+			
+			$HttpSocket = new HttpSocket();
+			$data = $this->data;
+
+            $request = array(
+            				'header' => array(
+            					'Accept'=>'application/json',
+            					'Content-Type' => 'application/json',
+            					'Authorization'=> 'Bearer'.' '.$this->Session->read('api.access_token'),
+							),
+						);
+            // $data = json_encode($data);
+            $response = $HttpSocket->get(Configure::read('api.domain_name').'/api/physician/get_patient_visit?visit_number='.$visit_number.'&patient_id='.$patient_id.'&practitioner_id='.$practitioner_id, $data,$request);
+            $response = json_decode($response, true);
+            // debug($response['data']);
+            $this->log(json_decode($response), 'apirespo_get_px');
+            if($response['success']){
+            	$send_audit = $this->addAuditLog('view_patient_visit',array(
+					'success'=>true,
+					'message'=>'Registration No. : '.$visit_number.", Patient ID: ".$patient_id.', Physician ID: '.$practitioner_id
+				));
+		    	try {
+					ini_set('default_socket_timeout', 10);
+					
+					$HttpSocket = new HttpSocket();
+					$data = $send_audit;
+		            $request = array(
+										'header' => array('Content-Type' => 'application/json','Accept'=>'application/json',
+									),
+								);
+		            $data = json_encode($data);
+		            $HttpSocket->post(Configure::read('api.domain_name').'/user/audit', $data, $request);
+				} catch (Exception $e) {
+					$this->log($e->getMessage(), 'apirespo_audit_log');
+				}
+          
+            }else{
+            	$send_audit = $this->addAuditLog('view_patient_visit',array(
+					'success'=>false,
+					'message'=>$response['message']
+				));
+		    	try {
+					ini_set('default_socket_timeout', 10);
+					
+					$HttpSocket = new HttpSocket();
+					$data = $send_audit;
+		            $request = array(
+										'header' => array('Content-Type' => 'application/json','Accept'=>'application/json',
+									),
+								);
+		            $data = json_encode($data);
+		            $HttpSocket->post(Configure::read('api.domain_name').'/user/audit', $data, $request);
+				} catch (Exception $e) {
+					$this->log($e->getMessage(), 'apirespo_audit_log');
+				}
+            }
+		} catch (Exception $e) {
+			// $myrequest['error']['message'] = $e->getMessage();
+			// $myrequest['error']['status'] = true;
+			$this->Session->setFlash($e->getMessage(), 'alert_flash');
+			$this->log($e->getMessage(), 'apirespo_get_px');
+		}
+		$this->set('data', $response['data']);
+
+    	// return $response['data'];
+    	// $this->header('Content-Type: text/json');
+    	$this->render('professional_fee');
+	}
+
+	public function getRemainingTime(){
+		$this->layout=false; 
+		
+		$expiration_datetime = strtotime($this->data['expiration_datetime']);   
+		$datetimenow = strtotime('now');
+		// Formulate the Difference between two dates 
+		$diff = $expiration_datetime - $datetimenow;  
+		$remainingTime['abs'] = $diff;
+		  
+		// To get the year divide the resultant date into 
+		// total seconds in a year (365*60*60*24) 
+		$years = floor($diff / (365*60*60*24));  
+		  
+		  
+		// To get the month, subtract it with years and 
+		// divide the resultant date into 
+		// total seconds in a month (30*60*60*24) 
+		$months = floor(($diff - $years * 365*60*60*24) 
+		                               / (30*60*60*24));  
+		  
+		  
+		// To get the day, subtract it with years and  
+		// months and divide the resultant date into 
+		// total seconds in a days (60*60*24) 
+		$days = floor(($diff - $years * 365*60*60*24 -  
+		             $months*30*60*60*24)/ (60*60*24)); 
+		  
+		  
+		// To get the hour, subtract it with years,  
+		// months & seconds and divide the resultant 
+		// date into total seconds in a hours (60*60) 
+		$hours = floor(($diff - $years * 365*60*60*24  
+		       - $months*30*60*60*24 - $days*60*60*24) 
+		                                   / (60*60));  
+		  
+		  
+		// To get the minutes, subtract it with years, 
+		// months, seconds and hours and divide the  
+		// resultant date into total seconds i.e. 60 
+		$minutes = floor(($diff - $years * 365*60*60*24  
+		         - $months*30*60*60*24 - $days*60*60*24  
+		                          - $hours*60*60)/ 60);  
+		  
+		  
+		// To get the minutes, subtract it with years, 
+		// months, seconds, hours and minutes  
+		$seconds = floor(($diff - $years * 365*60*60*24  
+		         - $months*30*60*60*24 - $days*60*60*24 
+		                - $hours*60*60 - $minutes*60));  
+		  
+		// Print the result 
+		// $diff = $years.' Years '. $months.' Months '. $days.' Days '. $hours.' Hours '. $minutes.' Minutes '. $seconds.' Seconds'; 
+		$diff = $hours.' Hours '. $minutes.' Minutes '. $seconds.' Seconds'; 
+
+		$remainingTime['readable'] = $diff;
+		$this->set('data', $remainingTime);
+    	$this->header('Content-Type: text/json');
+    	$this->render('/Common/json');
+	}
+
+	public function set_professional_fee(){
+		$this->layout = false;
+		$data['PatientVisit']['id'] = $this->data['PatientVisit']['id'];
+		$data['PatientCareProvider']['id'] = $this->data['PatientCareProvider']['id'];
+		$data['PatientCareProvider']['pf_amount'] = str_replace(",", "", $this->data['PatientCareProvider']['pf_amount']);
+		$data['PatientCareProvider']['expiration_datetime'] = $this->data['PatientCareProvider']['expiration_datetime'];
+		// $this->log($data, 'setpf');
+		
+		if($this->data){
+			try {
+				ini_set('default_socket_timeout', 10);
+				
+				$HttpSocket = new HttpSocket();
+				// $data = $this->data;
+
+	            $request = array(
+	            				'header' => array(
+	            					'Accept'=>'application/json',
+	            					'Content-Type' => 'application/json',
+	            					'Authorization'=> 'Bearer'.' '.$this->Session->read('api.access_token'),
+								),
+							);
+	            $data = json_encode($data);
+	            $response = $HttpSocket->post(Configure::read('api.domain_name').'/api/physician/set_professional_fee', $data,$request);
+	            $this->log(json_decode($response), 'apirespo_set_pf');
+	            $decoded_respo = json_decode($response);
+	            // add audit log here
+	            $this->Session->setFlash($decoded_respo->message, 'alert_flash');
+                $this->redirect('/physicians/dashboard');
+			} catch (Exception $e) {
+				$this->Session->setFlash($e->getMessage(), 'alert_flash');
+				$this->redirect('/physicians/dashboard');
+				$this->log($e->getMessage(), 'apirespo_set_pf');
+			}
+		}else{
+			$this->Session->setFlash('Unable to save PF', 'alert_flash');
+			$this->redirect('/physicians/dashboard');
+		}
+	}
+	
 	public function physician_profile(){
 		// $this->log($this->Session->read('User.isAuthorized'), 'now');
 		// $this->log($this->Session->read('User'), 'now');
