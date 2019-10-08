@@ -9,10 +9,16 @@ angular.
     $scope.range = [];
     $scope.filter_status = null;
     $scope.patient_name = '';
+    $scope.onqueue = 0;
+    $scope.completed = 0;
     
-    // $interval(function() {
-    //   $scope.getPatients();
-    // }, 10000);
+    if(jQuery(window).width() >= 767){
+      console.log('her');
+      $interval(function() {
+        $scope.getPatients();
+        $scope.getPatientVisits();
+      }, 10000);
+    }
     $scope.submit = function($event){
       var keyCode = $event.which || $event.keyCode;
       if (keyCode === 13) {
@@ -29,6 +35,29 @@ angular.
         $scope.sortKey = keyname;   //set the sortKey to the param passed
         $scope.reverse = true; //if true make it false and vice versa
     }
+
+    $scope.getPatientVisits = function(){
+      $http({
+        method : "POST",
+        url : '/physicians/getPatientVisits',
+        data: {  filter_status: $scope.filter_status, patient_name: $scope.patient_name }
+      }).then(function mySuccess(response) {
+        console.log(response);
+
+        respo_data = response.data.data;
+        if(response.data.error.status)
+            alert(response.data.error.message)
+        else{
+          
+          if(respo_data !== null){
+            $scope.onqueue = respo_data.onqueue;
+            $scope.completed = respo_data.completed;
+          }
+        }
+      }, function myError(response) {
+          alert(response.statusText);
+      });
+    };
 
     $scope.getPatients = function(pageNumber){
       console.log($scope.filter_status);
