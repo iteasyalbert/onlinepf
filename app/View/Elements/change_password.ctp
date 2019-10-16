@@ -15,8 +15,12 @@
     <div class="modal-dialog modal-md changepwModal">
       <div class="modal-content">
         <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          Change password form
+        	<?php if(!$this->Session->read('User.last_change_password')):?>
+		        <span class="glyphicon glyphicon-info-sign"></span> You must change your password.
+        	<?php else:?>
+		        <button type="button" class="close" data-dismiss="modal">&times;</button>
+		        Change password form
+	    	<?php endif;?>
         </div>
         <div class="modal-body">
         	<form action="/users/change_password" method="post" id="UserChangePasswordForm">
@@ -45,11 +49,26 @@
 
 <script>
 	jQuery(document).ready(function(){
+		// jQuery('#UserChangePasswordForm input');
+		
+		var last_change_password = <?php echo $this->Session->read('User.last_change_password');?>;
+		console.log(last_change_password);
+		if(!last_change_password)
+			jQuery('#changepwModal').modal({backdrop: 'static', keyboard: false});
 		jQuery('#change-password').click(function(){
 			jQuery('#changepwModal').modal('show');
 		});
 		jQuery('button.changePass').click(function(){
-			if(jQuery('#UserChangePasswordForm:input') != ''){
+			
+			var isValid = true;
+			jQuery("#UserChangePasswordForm input").each(function() {
+			   var element = jQuery(this);
+			   if (jQuery.trim(element.val()) == "") {
+			       isValid = false;
+			   }
+			});
+			console.log(isValid);
+			if(isValid){
 				if(jQuery("#confirmpwd").val() == jQuery("#newpwd").val()){
 					
 						jQuery.ajax({
@@ -58,7 +77,7 @@
 							type: 'POST',
 							dataType : 'json',
 							success:function(data){
-								console.log(data.error.status);
+								// console.log(data.error.status);
 								if(data.error.status)
 									data.message;
 								else{

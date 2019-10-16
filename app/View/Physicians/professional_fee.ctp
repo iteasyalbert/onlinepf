@@ -21,7 +21,7 @@
               <table class="table">
                 <tbody>
                   <tr>
-                    <td class="blabel">Hospital No.</td>
+                    <td class="blabel">Patient ID</td>
                     <td><?php echo $data['PatientVisit']['patient_id'];?></td>
                     <td class="blabel">Admission No.</td>
                     <td><?php echo $data['PatientVisit']['visit_number'];?></td>
@@ -57,18 +57,28 @@
                       ?>
                     </td>
                   </tr>
-                  <?php if($data['PatientVisit']['mgh_datetime']):?>
+                 
                       <tr>
-                        <td  class="blabel">DISCHARGE ORDER DATE TIME</td>
-                        <td><?php echo ($data['PatientVisit']['mgh_datetime']?date('Y-m-d H:i:s', strtotime($data['PatientVisit']['mgh_datetime'])):"");?></td>
-                        <td></td>
+                        <td  class="blabel">Date of Dicharge Order</td>
                         <td>
+                          <?php if($data['PatientVisit']['mgh_datetime']):?>
+                            <?php echo ($data['PatientVisit']['mgh_datetime']?date('Y-m-d H:i:s', strtotime($data['PatientVisit']['mgh_datetime'])):"");?>
+                          <?php endif;?>
+                            
+                        </td>
+                        <td class="blabel">Room & Bed:</td>
+                        <td>
+                          <?php echo $data['PatientVisit']['bed_room'];?>
                         </td>
                       </tr>
-                    <?php endif;?>
+                    
                   <tr>
-                    <td class="blabel" >Diagnosis</td>
+                    <td class="blabel" >Chief Complaint</td>
                     <td colspan="3"><?php echo $data['PatientVisit']['chief_complaint'];?></td>
+                  </tr>
+                  <tr>
+                    <td class="blabel" >Final Diagnosis</td>
+                    <td colspan="3"><?php echo $data['PatientVisit']['icd10'].' - '.$data['PatientVisit']['final_diagnosis'];?></td>
                   </tr>
                 </tbody>
               </table>
@@ -91,8 +101,8 @@
                     <tr>
                       <td class="blabel">Hospitalization Plan</td>
                       <td> <?php echo $data['PatientVisit']['hospitalization_plan'];?></td>
-                      <td class="blabel">PHIC</td>
-                      <td><?php echo $data['PatientVisit']['phic_eligible'];?></td>
+                      <td class="blabel">PHIC Eligible?</td>
+                      <td><?php echo $data['PatientVisit']['membership_id'];?></td>
                     </tr>
                     <td class="blabel">HMO</td>
                       <td> 
@@ -116,11 +126,11 @@
                     <tr>
                       <td class="blabel">Consultant Role Type</td>
                       <td> <?php echo $data['PatientVisit']['consultant_type'];?></td>
-                      <!-- <td class="blabel">Status</td>
-                      <td><?php echo $data['PatientVisit']['patient_visit_status'];?> | A = ACTIVE, F = MGH</td> -->
+                      <td class="blabel"></td>
+                      <td></td>
                     </tr>
                     <tr>
-                      <td class="blabel">Amount :</td>
+                      <td class="blabel"> PF Amount :</td>
                       <td colspan="3">
                         <div class="form-group">
                           
@@ -128,6 +138,33 @@
                         </div>
                       </td>
                     </tr>
+                    <!-- <tr>
+                      <td class="blabel">PHIC Amount :</td>
+                      <td colspan="3">
+                        <div class="form-group">
+                          
+                          <input type="text" class="form-control" value="<?php echo $data['PatientVisit']['phic_amount'];?>" readonly>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="blabel">Discount :</td>
+                      <td colspan="3">
+                        <div class="form-group">
+                          
+                          <input type="text" class="form-control" value="<?php echo $data['PatientVisit']['discount'];?>" readonly>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="blabel">Total :</td>
+                      <td colspan="3">
+                        <div class="form-group">
+                          
+                          <input type="text" class="form-control" value="<?php echo ($data['PatientVisit']['pf_amount'] + $data['PatientVisit']['phic_amount']) - $data['PatientVisit']['discount'];?>" readonly>
+                        </div>
+                      </td>
+                    </tr> -->
                     <tr>
                       <td  colspan="4"><button type="submit" class="btn btn-primary btn-block">Submit</button></td>
                     </tr>
@@ -144,7 +181,7 @@
   
   jQuery( document ).ready(function() {
     jQuery('#pf_amount').commaTextbox();
-    jQuery(':input').select();
+    jQuery('#pf_amount').select();
     <?php 
       $enable_edit_pf = true;
       if( !is_null($data['PatientVisit']['status']))
@@ -165,8 +202,8 @@
             method: 'post',
             data: {expiration_datetime},
             success:function(data){
-              console.log(data.abs);
-              console.log(data.readable);
+              // console.log(data.abs);
+              // console.log(data.readable);
               if (data.abs < 0) {
                 clearInterval(x);
                 jQuery('#professionalFee :submit').prop('disabled',true);

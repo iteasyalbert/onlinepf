@@ -134,6 +134,7 @@ class UsersController extends AppController {
 					            $this->Session->write('User.mobile', $get_person->data->mobile);
 					            $this->Session->write('User.name', $get_person->data->firstname.' '.$get_person->data->lastname );
 					            $this->Session->write('User.practitioner_external_id', $get_person->data->practitioner_external_id );
+					            $this->Session->write('User.last_change_password', ($get_person->data->last_change_password?1:0) );
 					            $mobile_no = trim($get_person->data->mobile);
 				            }else{
 				            	$this->Session->write('User.id', $get_person->data->user_id);

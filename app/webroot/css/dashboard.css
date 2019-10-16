@@ -28,12 +28,15 @@
 
 .divtable .th { font-weight: bold; }
 
-.name { width: 15%; }
-.reg { width: 15%; }
-.patid { width: 15%; }
-.gender { width: 15%; }
-.bdate { width: 15%; }
-.pf { width: 15%; }
+.name { width: 20%; }
+.reg { width: 10%; }
+.patid { width: 10%; }
+.gender { width: 7%; }
+.bdate { width: 3%; }
+.pf { width: 10%; }
+.phic { width: 10%; }
+.disc { width: 10%; }
+.total { width: 10%; }
 .action {width: 10%}
 @media (max-width: 767px) {
 
@@ -68,11 +71,14 @@
 
 .accordion-xs-collapse .td:before { font-weight: bold; }
 .accordion-xs-collapse .name:before { content: 'Name: '; }
-.accordion-xs-collapse .reg:before { content: 'Registration Number: '; }
+.accordion-xs-collapse .reg:before { content: 'Admission Number: '; }
 .accordion-xs-collapse .patid:before { content: 'Patient ID: '; }
 .accordion-xs-collapse .gender:before { content: 'Gender: '; }
-.accordion-xs-collapse .bdate:before { content: 'Birthdate: '; }
-.accordion-xs-collapse .pf:before { content: 'Professional Fee: '; }
+.accordion-xs-collapse .bdate:before { content: 'Age: '; }
+.accordion-xs-collapse .pf:before { content: 'Professional Fee: '; align:left; }
+.accordion-xs-collapse .phic:before { content: 'PHIC: '; }
+.accordion-xs-collapse .disc:before { content: 'Discount: '; }
+.accordion-xs-collapse .total:before { content: 'Total: '; }
 .accordion-xs-collapse .action:before {  content: 'Action: '; }
 
 .accordion-xs .accordion-xs-toggle:after {

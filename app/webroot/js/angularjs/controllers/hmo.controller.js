@@ -1,7 +1,7 @@
   angular.
   module('mro').
   controller('HmoCtrl', HmoCtrl);
-  function HmoCtrl($http, $scope, $filter){
+  function HmoCtrl($http, $scope, $filter, $window){
     $scope.hmos = [];
     $scope.totalPages = 0;
     $scope.currentPage = 1;
@@ -43,6 +43,25 @@
 
           $scope.range = pages;
         }
+      }, function myError(response) {
+          alert(response.statusText);
+      });
+    };
+
+    $scope.addHmoSubmit = function(){
+      console.log('here');
+      $http({
+        method : "POST",
+        url : '/admin/hmo/add',
+        data: jQuery('#HmoForm').serialize(),
+        headers : { 'Content-Type': 'application/x-www-form-urlencoded' } 
+      }).then(function mySuccess(response) {   
+          if(response.data.error.status)
+            alert(response.data.error.message)
+          else{
+            alert('Hmo has been saved.');
+            $window.location.reload();
+          }
       }, function myError(response) {
           alert(response.statusText);
       });

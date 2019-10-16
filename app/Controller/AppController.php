@@ -72,10 +72,11 @@ class AppController extends Controller{
 	
 	function addAuditLog($action, $remarks=null, $table=null)
 	{
+		// $this->log($this->Session->read('User.username'), 'auditlog');
 		// $this->loadModel('AuditLog');
 		$audit=array();
 		$agent=$this->getBrowser();
-		$audit['user_id']=$this->Session->read('User.id');
+		$audit['user_id']=$this->Session->read('User.username');
 		$audit['datetime']=date('Y-m-d H:i:s');
 		$audit['url']=$this->here;
 		$audit['action']=$action;
