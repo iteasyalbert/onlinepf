@@ -1,3 +1,4 @@
+
 #searchInput {
     background-image: url('/img/searchicon.png');
     background-position: 10px 10px;
@@ -9,7 +10,16 @@
     border: 1px solid #ddd;
     margin-bottom: 12px;
   }
-
+.block {
+  display: block;
+  width: 100%;
+  border: none;
+  color: white;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+}
 .divtable .tr {
   overflow: hidden;
   clear: both;
@@ -17,29 +27,40 @@
   background-color: white;
   color: black;
 }
-
 .divtable .th,
 .divtable .td {
   padding: 5px 10px;
   float: left;
 
 }
-
+.btn {
+  padding: 15px 25px;
+  font-size: 24px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
 
 .divtable .th { font-weight: bold; }
 
-.name { width: 20%; }
-.reg { width: 10%; }
-.patid { width: 10%; }
-.gender { width: 7%; }
-.bdate { width: 3%; }
-.pf { width: 10%; }
-.phic { width: 10%; }
-.disc { width: 10%; }
-.total { width: 10%; }
-.action {width: 10%}
-@media (max-width: 767px) {
 
+.reg { width: 15%; }
+.patid { width: 10%; }
+.name { width: 30%; }
+.gender { width: 10%; }
+.bdate { width: 8%; }
+.pf { width:  15%; text-align: right;  }
+/*.phica { width: 10%; }
+.discount { width: 10%; }
+.total { width: 10%; }*/
+.action {width: 10%;}
+.mobileShow{ display: none; }
+@media (max-width: 767px) {
+.mobileHide{ display: none;}
+.mobileShow { display: inline; }
 .accordion-xs .headings { display: none; }
 
 .accordion-xs .tr { border-bottom-color: white; }
@@ -70,15 +91,16 @@
 .accordion-xs-collapse .inner { padding: 10px; }
 
 .accordion-xs-collapse .td:before { font-weight: bold; }
-.accordion-xs-collapse .name:before { content: 'Name: '; }
-.accordion-xs-collapse .reg:before { content: 'Admission Number: '; }
+.accordion-xs-collapse .reg:before { content: 'Registration Number: '; }
 .accordion-xs-collapse .patid:before { content: 'Patient ID: '; }
+.accordion-xs-collapse .name:before { content: 'Name: '; }
 .accordion-xs-collapse .gender:before { content: 'Gender: '; }
 .accordion-xs-collapse .bdate:before { content: 'Age: '; }
-.accordion-xs-collapse .pf:before { content: 'Professional Fee: '; align:left; }
-.accordion-xs-collapse .phic:before { content: 'PHIC: '; }
-.accordion-xs-collapse .disc:before { content: 'Discount: '; }
-.accordion-xs-collapse .total:before { content: 'Total: '; }
+.accordion-xs-collapse .pf:before { content: 'Professional Fee: ';  }
+.pf { width:  15%; text-align: left;  }
+/*.accordion-xs-collapse .phica:before { content: 'PHIC: '; }
+.accordion-xs-collapse .discount:before { content: 'Discount: '; }
+.accordion-xs-collapse .total:before { content: 'Total: '; }*/
 .accordion-xs-collapse .action:before {  content: 'Action: '; }
 
 .accordion-xs .accordion-xs-toggle:after {
