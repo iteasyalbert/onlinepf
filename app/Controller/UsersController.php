@@ -141,6 +141,7 @@ class UsersController extends AppController {
 					            $this->Session->write('User.username', $get_person->data->user_username);
 					            $this->Session->write('User.role', $get_person->data->role);
 					            $this->Session->write('User.name', $get_person->data->name );
+					            $this->Session->write('User.last_change_password', 1);
 				            }
 
 				            if($get_person->success && $get_person->data->role){

@@ -14,11 +14,11 @@ angular.
     $scope.completed = 0;
     
     
-    // if(jQuery(window).width() >= 767){
-    //   $interval(function() {
-    //     $scope.getPatients();
-    //   }, 20000);
-    // }
+    if(jQuery(window).width() >= 767){
+      $interval(function() {
+        $scope.getPatients();
+      }, 20000);
+    }
     $scope.submit = function($event){
       var keyCode = $event.which || $event.keyCode;
       if (keyCode === 13) {

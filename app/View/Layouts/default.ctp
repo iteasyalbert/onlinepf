@@ -88,6 +88,7 @@
                                         <li><a href="/admin/audit_logs">Audit Logs</a></li>
                                         <li><a href="/admin/configurations">Configurations</a></li>
                                         <li><a href="/admin/sms_templates">SMS Template</a></li>
+                                        <li><a href="/admin/consultant_types">Consultant Role Types</a></li>
                                         <li><a href="/admin/hmo">Hmo</a></li>
                                         <li><a href="/admin/medical_packages">Medical Package</a></li>
                                         <li><a href="/admin/audit_logs/utilization">Utilization Report</a></li>
