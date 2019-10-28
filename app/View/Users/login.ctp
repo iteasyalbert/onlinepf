@@ -38,7 +38,7 @@
 					<?php echo $this->Form->create('User',array('controller'=>'users','action'=>'login','autocomplete'=>'off','ng-submit'=>'login($event)'));?>
 					<div class="form-group">
 						<span class="input-icon"><?php echo $this->Form->input('username',array('id' => 'username','type' => 'text', 'label'=>'','placeholder'=>'PRC LIC. NO.','div'=>false, 'class'=>'form-control','ng-model'=>'User.username'));?><i class="fa fa-user"></i> </span>
-						<span class="input-icon"><?php echo $this->Form->input('password',array('id' => 'password','type' => 'password', 'label'=>'','placeholder'=>'BIRTHDATE (dd/mm/yyyy)','div'=>false, 'class'=>'form-control','ng-model'=>'User.password'));?><i class="fa fa-lock"></i> </span>
+						<span class="input-icon"><?php echo $this->Form->input('password',array('id' => 'password','type' => 'password', 'label'=>'','placeholder'=>'Password','div'=>false, 'class'=>'form-control','ng-model'=>'User.password'));?><i class="fa fa-lock"></i> </span>
 					</div>
 
 					<div class="form-group">

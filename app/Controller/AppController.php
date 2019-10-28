@@ -2,7 +2,6 @@
 App::uses('File', 'Utility');
 App::uses('HttpSocket', 'Network/Http');
 class AppController extends Controller{
-    var $uses = array('Item', 'Question', 'Post');
     var $components = array(
     		'RequestHandler',
     // 		'Auth' => array(

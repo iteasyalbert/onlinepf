@@ -24,10 +24,10 @@
     <div class="col-sm-6 col-xs-12">
       <div class="mobileHide">
         <div class="panel panel-info text-center">
-          <div class="panel-heading">
-            <h1><a href="#searchInput" class="dashboard-panel">On queue</a></h1>
+          <div class="panel-heading" style="background-color: steelblue;">
+            <h1><a href="#searchInput" class="dashboard-panel"style="text-decoration:none;color:white;">ONQUEUE</a></h1>
           </div>
-          <div class="panel-body">
+          <div class="panel-body" >
             <span style="font-size: 40px;">{{onqueue}}</span>
           </div>
         </div>
@@ -46,8 +46,8 @@
     <div class="col-sm-6 col-xs-12">
       <div class="mobileHide">
         <div class="panel panel-info text-center">
-          <div class="panel-heading">
-            <h1><a href="#searchInput" class="dashboard-panel">Completed</a></h1>
+          <div class="panel-heading" style="background-color: steelblue;">
+            <h1><a href="#searchInput" class="dashboard-panel" style="text-decoration:none; color:white;">COMPLETED</a></h1>
           </div>
           <div class="panel-body">
             <span style="font-size: 40px;">{{completed}}</span>
@@ -128,7 +128,7 @@
       </div>
       <div ng-if="!patients_active.length" style="text-align: center">No record found</div>
       <div class="tr" ng-repeat="px in patients_active = (patients | orderBy:sortKey:reverse)">
-        <div class="td reg accordion-xs-toggle" align="left"><span class="hidden-lg hidden-md hidden-sm"> </span>{{px.visit_number}} <span class="hidden-lg hidden-md hidden-sm">| {{px.px_last_name}}, {{px.px_first_name}} {{px.px_middle_name}}</span></div>
+        <div class="td reg accordion-xs-toggle" align="left"><span class="hidden-lg hidden-md hidden-sm"> </span>{{px.visit_number}} <span class="hidden-lg hidden-md hidden-sm"> {{px.px_last_name}}, {{px.px_first_name}} {{px.px_middle_name}}</span></div>
         <div class="accordion-xs-collapse">
           <div class="inner">   
             <div class="td patid" align="left">{{px.patient_id}}</div>
@@ -139,7 +139,7 @@
             <!-- <div class="td phic" align="left">{{px.phic_amount | number:2}}</div>
             <div class="td disc" align="left">({{px.discount | number:2}})</div>
             <div class="td total" align="left">{{px.total | number:2}}</div> -->
-            <div class="td action" align="left"><a href="/physicians/view_transaction/{{px.visit_number}}/{{px.patient_id}}/{{px.practitioner_id}}" >  <span class="glyphicon glyphicon-edit"></span> EDIT</a></div>
+            <div class="td action" align="left"><a href="/physicians/view_transaction/{{px.external_id}}/{{px.patient_id}}/{{px.practitioner_id}}" >  <span class="glyphicon glyphicon-edit"></span> EDIT</a></div>
           </div>
         </div>
       </div>
@@ -184,7 +184,7 @@
       </div>
       <div ng-if="!patients_posting.length" style="text-align: center">No record found</div>
       <div class="tr" ng-repeat="px in patients_posting = (patients | orderBy:sortKey:reverse)">
-        <div class="td reg accordion-xs-toggle" align="left"><span class="hidden-lg hidden-md hidden-sm"> </span>{{px.visit_number}} <span class="hidden-lg hidden-md hidden-sm">| {{px.px_last_name}}, {{px.px_first_name}} {{px.px_middle_name}}</span></div>
+        <div class="td reg accordion-xs-toggle" align="left"><span class="hidden-lg hidden-md hidden-sm"> </span>{{px.visit_number}} <span class="hidden-lg hidden-md hidden-sm"> {{px.px_last_name}}, {{px.px_first_name}} {{px.px_middle_name}}</span></div>
         <div class="accordion-xs-collapse">
           <div class="inner">   
             <div class="td patid" align="left">{{px.patient_id}}</div>
@@ -195,7 +195,7 @@
             <!-- <div class="td phic" align="left">{{px.phic_amount | number:2}}</div>
             <div class="td disc" align="left">({{px.discount | number:2}})</div>
             <div class="td total" align="left">{{px.total | number:2}}</div> -->
-            <div class="td action" align="left"><a href="/physicians/view_transaction/{{px.visit_number}}/{{px.patient_id}}/{{px.practitioner_id}}" >  <span class="glyphicon glyphicon-edit"></span> VIEW</a></div>
+            <div class="td action" align="left"><a href="/physicians/view_transaction/{{px.external_id}}/{{px.patient_id}}/{{px.practitioner_id}}" >  <span class="glyphicon glyphicon-edit"></span> VIEW</a></div>
           </div>
         </div>
       </div>
@@ -240,7 +240,7 @@
       </div>
       <div ng-if="!patients_completed.length" style="text-align: center">No record found</div>
       <div class="tr" ng-repeat="px in patients_completed = (patients | orderBy:sortKey:reverse)">
-        <div class="td reg accordion-xs-toggle" align="left"><span class="hidden-lg hidden-md hidden-sm"> </span>{{px.visit_number}} <span class="hidden-lg hidden-md hidden-sm">| {{px.px_last_name}}, {{px.px_first_name}} {{px.px_middle_name}}</span></div>
+        <div class="td reg accordion-xs-toggle" align="left"><span class="hidden-lg hidden-md hidden-sm"> </span>{{px.visit_number}} <span class="hidden-lg hidden-md hidden-sm"> {{px.px_last_name}}, {{px.px_first_name}} {{px.px_middle_name}}</span></div>
         <div class="accordion-xs-collapse">
           <div class="inner">   
             <div class="td patid" align="left">{{px.patient_id}}</div>
@@ -251,7 +251,7 @@
             <!-- <div class="td phic" align="left">{{px.phic_amount | number:2}}</div>
             <div class="td disc" align="left">({{px.discount | number:2}})</div>
             <div class="td total" align="left">{{px.total | number:2}}</div> -->
-            <div class="td action" align="left"><a href="/physicians/view_transaction/{{px.visit_number}}/{{px.patient_id}}/{{px.practitioner_id}}" >  <span class="glyphicon glyphicon-edit"></span> VIEW</a></div>
+            <div class="td action" align="left"><a href="/physicians/view_transaction/{{px.external_id}}/{{px.patient_id}}/{{px.practitioner_id}}" >  <span class="glyphicon glyphicon-edit"></span> VIEW</a></div>
           </div>
         </div>
       </div>

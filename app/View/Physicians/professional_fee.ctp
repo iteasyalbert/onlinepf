@@ -76,10 +76,10 @@
                     <td class="blabel" >Chief Complaint</td>
                     <td colspan="3"><?php echo $data['PatientVisit']['chief_complaint'];?></td>
                   </tr>
-                  <tr>
+                  <!-- <tr>
                     <td class="blabel" >Final Diagnosis</td>
                     <td colspan="3"><?php echo $data['PatientVisit']['icd10'].' - '.$data['PatientVisit']['final_diagnosis'];?></td>
-                  </tr>
+                  </tr> -->
                 </tbody>
               </table>
             </div>
@@ -100,9 +100,9 @@
                   <tbody>
                     <tr>
                       <td class="blabel">Hospitalization Plan</td>
-                      <td> <?php echo $data['PatientVisit']['hospitalization_plan'];?></td>
-                      <td class="blabel">PHIC Eligible?</td>
-                      <td><?php echo $data['PatientVisit']['membership_id'];?></td>
+                      <td> <?php echo ($data['PatientVisit']['hospitalization_plan']=='SP'?'SELF-PAY':$data['PatientVisit']['hospitalization_plan']);?></td>
+                      <td class="blabel">PHIC Eligible</td>
+                      <td><?php echo ($data['PatientVisit']['membership_id']=='1036'?'YES':'Not Applicable');?></td>
                     </tr>
                     <td class="blabel">HMO</td>
                       <td> 
@@ -126,8 +126,10 @@
                     <tr>
                       <td class="blabel">Consultant Role Type</td>
                       <td> <?php echo $data['PatientVisit']['consultant_type'];?></td>
-                      <td class="blabel"></td>
-                      <td></td>
+                      <?php if($data['PatientVisit']['status']==10):?>
+                        <td class="blabel">Status</td>
+                        <td><span style="color:red;"><?php echo 'Cancelled';?></span></td>
+                      <?php endif;?>
                     </tr>
                     <tr>
                       <td class="blabel"> PF Amount :</td>
@@ -184,7 +186,7 @@
     jQuery('#pf_amount').select();
     <?php 
       $enable_edit_pf = true;
-      if( !is_null($data['PatientVisit']['status']))
+      if( !is_null($data['PatientVisit']['status']) || $data['PatientVisit']['patient_visit_status'] == 'X')
         $enable_edit_pf = false;
     ?>
     var expiration_datetime = "<?php echo $data['PatientVisit']['expiration_datetime'];?>";
